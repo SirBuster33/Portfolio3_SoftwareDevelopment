@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Student_Database" uuid="23c72f9d-88e0-4e2f-bb65-ad7054f468f6">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Database for the third Portfolio in Computer Science</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Kata\Documents\RUC stuff from small lenovo\Ruc\Philipp RUC\5th Semester\Portfolio3_SoftwareDevelopment\src\Student_Database\Student_Database</jdbc-url>
+    </data-source>
+  </component>
+</project>
