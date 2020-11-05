@@ -1,30 +1,63 @@
-INSERT INTO course (ID, Name, Teacher, Semester, Year) VALUES (1, 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
-                                                              (2, 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
-                                                              (3, 'Software Development', 'Line Reinhardt', 'Spring', 2020);
+INSERT INTO course (ID, Name, Teacher, Semester, Year) VALUES
+    ('C1', 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
+    ('C2', 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
+    ('C3', 'Software Development', 'Line Reinhardt', 'Spring', 2020);
 
-INSERT INTO student (ID, Name, City) VALUES (1, 'Aisha Lincoln', 'Nykoebing F'),
-                                            (2, 'Anya Nielsen', 'Nykoebing F'),
+INSERT INTO student (ID, Name, City) VALUES
+    ('S1', 'Aisha Lincoln', 'Nykoebing F'),
+    ('S2', 'Anya Nielsen', 'Nykoebing F'),
+    ('S3', 'Alfred Jensen', 'Camas'),
+    ('S4', 'Berta Bertelsen', 'Billund'),
+    ('S5', 'Albert Antonsen', 'Soroe'),
+    ('S6', 'Eske Eriksen', 'Eskildstrup'),
+    ('S7', 'Olaf Olesen', 'Odense'),
+    ('S8', 'Salma Simonsen', 'Stockholm'),
+    ('S9', 'Theis Thomasen', 'Toelloese'),
+    ('S10', 'Janet Jensen', 'Jyllinge');
+
+INSERT INTO grade (StudentID, CourseID, Grade) VALUES
+    -- Aisha
+    ('S1', 'C1', 10),
+    ('S1', 'C2', 12),
+    -- Anya
+    ('S2', 'C1', 12),
+    ('S2', 'C3', null),
+    -- Alfred
+    ('S3', 'C1', 10),
+    ('S3', 'C2', 7),
+    -- Berta
+    ('S4', 'C1', 2),
+    ('S4', 'C3', null),
+    -- Albert
+    ('S5', 'C1', 7),
+    ('S5', 'C2', 10),
+    -- Eske
+    ('S6', 'C1', 10),
+    ('S6', 'C3', null),
+    -- Olaf Olesen
+    ('S7', 'C1', 12),
+    ('S7', 'C2', 4),
+    -- Salma Simonsen
+    ('S8', 'C1', 12),
+    ('S8', 'C3', null),
+    -- Theis Thomasen
+    ('S9', 'C1', 12),
+    ('S9', 'C2', 12),
+    -- Janet Jensen
+    ('S10', 'C1', 7),
+    ('S10', 'C3', null);
 
 
-Aisha Lincoln from Nykøbing F, Courses: SD 2019 in autum semester got grade 12, ES1 2019 autumn got
-grade 10.
-Anya Nielsen from Nykøbing F, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
-grade 12
-Alfred Jensen from Camas, Courses: SD 2019 in autumn semester got grade 7, ES1 2019 autumn got grade
-10
-Berta Bertelsen from Billund, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester
-got grade 2
-Albert Antonsen from Sorø, Courses: SD 2019 in autumn semester got grade 10, ES1 2019 autumn got
-grade 7
-Eske Eriksen from Eskildstrup, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
-grade 10
-Olaf Olesen from Odense, Courses: SD 2019 in autumn semester got grade 4, ES1 2019 autumn semester
-got grade 12
-Salma Simonsen from Stockholm, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
-grade 12
-Theis Thomasen from Tølløse, Courses: SD 2019 in autumn semester got grade 12, ES1 2019 autumn got
-grade 12
-Janet Jensen from Jyllinge, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester
-got grade 7
-Line is teacher for SD 2019 autumn and SD 2020 spring.
-Ebbe is teacher for ES1 2019 autumn.
+-- Aisha Lincoln from Nykøbing F, Courses: SD 2019 in autum semester got grade 12, ES1 2019 autumn got grade 10.
+-- Anya Nielsen from Nykøbing F, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 12
+-- Alfred Jensen from Camas, Courses: SD 2019 in autumn semester got grade 7, ES1 2019 autumn got grade 10
+-- Berta Bertelsen from Billund, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester got grade 2
+-- Albert Antonsen from Sorø, Courses: SD 2019 in autumn semester got grade 10, ES1 2019 autumn got grade 7
+-- Eske Eriksen from Eskildstrup, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 10
+-- Olaf Olesen from Odense, Courses: SD 2019 in autumn semester got grade 4, ES1 2019 autumn semester got grade 12
+-- Salma Simonsen from Stockholm, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 12
+-- Theis Thomasen from Tølløse, Courses: SD 2019 in autumn semester got grade 12, ES1 2019 autumn got grade 12
+-- Janet Jensen from Jyllinge, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester got grade 7
+
+-- Line is teacher for SD 2019 autumn and SD 2020 spring.
+-- Ebbe is teacher for ES1 2019 autumn.

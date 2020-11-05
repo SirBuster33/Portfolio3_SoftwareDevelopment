@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS grade;
 
 CREATE TABLE IF NOT EXISTS course(
-    ID          integer,
+    ID          text,
     Name        text,
     Teacher     text,
     Semester    text,
@@ -12,15 +12,15 @@ CREATE TABLE IF NOT EXISTS course(
 );
 
 CREATE TABLE IF NOT EXISTS student(
-  ID        integer,
+  ID        text,
   Name      text,
   City      text,
   primary key (ID)
 );
 
 CREATE TABLE IF NOT EXISTS grade(
-    CourseID  integer,
-    StudentID integer,
+    StudentID text,
+    CourseID  text,
     Grade     integer,
     primary key (CourseID, StudentID),
     foreign key (CourseID) REFERENCES course (ID) ON DELETE RESTRICT ON UPDATE CASCADE,
