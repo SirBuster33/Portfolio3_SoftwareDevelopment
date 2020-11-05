@@ -1,0 +1,30 @@
+INSERT INTO course (ID, Name, Teacher, Semester, Year) VALUES (1, 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
+                                                              (2, 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
+                                                              (3, 'Software Development', 'Line Reinhardt', 'Spring', 2020);
+
+INSERT INTO student (ID, Name, City) VALUES (1, 'Aisha Lincoln', 'Nykoebing F'),
+                                            (2, 'Anya Nielsen', 'Nykoebing F'),
+
+
+Aisha Lincoln from Nykøbing F, Courses: SD 2019 in autum semester got grade 12, ES1 2019 autumn got
+grade 10.
+Anya Nielsen from Nykøbing F, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
+grade 12
+Alfred Jensen from Camas, Courses: SD 2019 in autumn semester got grade 7, ES1 2019 autumn got grade
+10
+Berta Bertelsen from Billund, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester
+got grade 2
+Albert Antonsen from Sorø, Courses: SD 2019 in autumn semester got grade 10, ES1 2019 autumn got
+grade 7
+Eske Eriksen from Eskildstrup, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
+grade 10
+Olaf Olesen from Odense, Courses: SD 2019 in autumn semester got grade 4, ES1 2019 autumn semester
+got grade 12
+Salma Simonsen from Stockholm, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got
+grade 12
+Theis Thomasen from Tølløse, Courses: SD 2019 in autumn semester got grade 12, ES1 2019 autumn got
+grade 12
+Janet Jensen from Jyllinge, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester
+got grade 7
+Line is teacher for SD 2019 autumn and SD 2020 spring.
+Ebbe is teacher for ES1 2019 autumn.
