@@ -1,52 +1,55 @@
 INSERT INTO course (ID, Name, Teacher, Semester, Year) VALUES
-    ('C1', 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
-    ('C2', 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
-    ('C3', 'Software Development', 'Line Reinhardt', 'Spring', 2020);
+    ('C001', 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
+    ('C002', 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
+    ('C003', 'Software Development', 'Line Reinhardt', 'Spring', 2020);
 
 INSERT INTO student (ID, Name, City) VALUES
-    ('S1', 'Aisha Lincoln', 'Nykoebing F'),
-    ('S2', 'Anya Nielsen', 'Nykoebing F'),
-    ('S3', 'Alfred Jensen', 'Camas'),
-    ('S4', 'Berta Bertelsen', 'Billund'),
-    ('S5', 'Albert Antonsen', 'Soroe'),
-    ('S6', 'Eske Eriksen', 'Eskildstrup'),
-    ('S7', 'Olaf Olesen', 'Odense'),
-    ('S8', 'Salma Simonsen', 'Stockholm'),
-    ('S9', 'Theis Thomasen', 'Toelloese'),
-    ('S10', 'Janet Jensen', 'Jyllinge');
+('S001', 'Aisha Lincoln', 'Nykoebing F'),
+('S002', 'Anya Nielsen', 'Nykoebing F'),
+('S003', 'Alfred Jensen', 'Camas'),
+('S004', 'Berta Bertelsen', 'Billund'),
+('S005', 'Albert Antonsen', 'Soroe'),
+('S006', 'Eske Eriksen', 'Eskildstrup'),
+('S007', 'Olaf Olesen', 'Odense'),
+('S008', 'Salma Simonsen', 'Stockholm'),
+('S009', 'Theis Thomasen', 'Toelloese'),
+('S010', 'Janet Jensen', 'Jyllinge');
 
 INSERT INTO grade (StudentID, CourseID, Grade) VALUES
     -- Aisha
-    ('S1', 'C1', 10),
-    ('S1', 'C2', 12),
+    ('S001', 'C1', 10),
+    ('S001', 'C2', 12),
     -- Anya
-    ('S2', 'C1', 12),
-    ('S2', 'C3', null),
+    ('S002', 'C1', 12),
+    ('S002', 'C3', null),
     -- Alfred
-    ('S3', 'C1', 10),
-    ('S3', 'C2', 7),
+    ('S003', 'C1', 10),
+    ('S003', 'C2', 7),
     -- Berta
-    ('S4', 'C1', 2),
-    ('S4', 'C3', null),
+    ('S004', 'C1', 2),
+    ('S004', 'C3', null),
     -- Albert
-    ('S5', 'C1', 7),
-    ('S5', 'C2', 10),
+    ('S005', 'C1', 7),
+    ('S005', 'C2', 10),
     -- Eske
-    ('S6', 'C1', 10),
-    ('S6', 'C3', null),
+    ('S006', 'C1', 10),
+    ('S006', 'C3', null),
     -- Olaf Olesen
-    ('S7', 'C1', 12),
-    ('S7', 'C2', 4),
+    ('S007', 'C1', 12),
+    ('S007', 'C2', 4),
     -- Salma Simonsen
-    ('S8', 'C1', 12),
-    ('S8', 'C3', null),
+    ('S008', 'C1', 12),
+    ('S008', 'C3', null),
     -- Theis Thomasen
-    ('S9', 'C1', 12),
-    ('S9', 'C2', 12),
+    ('S009', 'C1', 12),
+    ('S009', 'C2', 12),
     -- Janet Jensen
-    ('S10', 'C1', 7),
-    ('S10', 'C3', null);
+    ('S010', 'C1', 7),
+    ('S010', 'C3', null);
 
+SELECT ID
+FROM student
+ORDER BY ID;
 
 -- Aisha Lincoln from Nykøbing F, Courses: SD 2019 in autum semester got grade 12, ES1 2019 autumn got grade 10.
 -- Anya Nielsen from Nykøbing F, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 12
