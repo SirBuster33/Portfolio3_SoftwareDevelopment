@@ -2,6 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../../../javafx-sdk-11.0.2/lib" />
+      <root url="jar://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

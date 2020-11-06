@@ -18,7 +18,7 @@
     <table id="9" parent="2" name="student"/>
     <column id="10" parent="6" name="ID">
       <Position>1</Position>
-      <DataType>integer|0s</DataType>
+      <DataType>text|0s</DataType>
     </column>
     <column id="11" parent="6" name="Name">
       <Position>2</Position>
@@ -36,42 +36,42 @@
       <Position>5</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <key id="15" parent="6">
+    <index id="15" parent="6" name="sqlite_autoindex_course_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="16" parent="6">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_course_1</UnderlyingIndexName>
     </key>
-    <column id="16" parent="7" name="CourseID">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-    </column>
     <column id="17" parent="7" name="StudentID">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
     </column>
-    <column id="18" parent="7" name="Grade">
+    <column id="18" parent="7" name="CourseID">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="19" parent="7" name="Grade">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="19" parent="7" name="sqlite_autoindex_grade_1">
+    <index id="20" parent="7" name="sqlite_autoindex_grade_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>CourseID
 StudentID</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="20" parent="7">
+    <key id="21" parent="7">
       <ColNames>CourseID
 StudentID</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_grade_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="21" parent="7">
-      <ColNames>CourseID</ColNames>
-      <RefTableName>course</RefTableName>
-      <RefColNames>ID</RefColNames>
-      <OnDelete>restrict</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
     <foreign-key id="22" parent="7">
       <ColNames>StudentID</ColNames>
       <RefTableName>student</RefTableName>
@@ -79,41 +79,55 @@ StudentID</ColNames>
       <OnDelete>restrict</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="23" parent="8" name="type">
+    <foreign-key id="23" parent="7">
+      <ColNames>CourseID</ColNames>
+      <RefTableName>course</RefTableName>
+      <RefColNames>ID</RefColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="24" parent="8" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="24" parent="8" name="name">
+    <column id="25" parent="8" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="25" parent="8" name="tbl_name">
+    <column id="26" parent="8" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="26" parent="8" name="rootpage">
+    <column id="27" parent="8" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="27" parent="8" name="sql">
+    <column id="28" parent="8" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="28" parent="9" name="ID">
+    <column id="29" parent="9" name="ID">
       <Position>1</Position>
-      <DataType>integer|0s</DataType>
+      <DataType>text|0s</DataType>
     </column>
-    <column id="29" parent="9" name="Name">
+    <column id="30" parent="9" name="Name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="30" parent="9" name="City">
+    <column id="31" parent="9" name="City">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <key id="31" parent="9">
+    <index id="32" parent="9" name="sqlite_autoindex_student_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="9">
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_student_1</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
