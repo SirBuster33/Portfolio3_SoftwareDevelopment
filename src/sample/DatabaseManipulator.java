@@ -1,4 +1,5 @@
 package sample;
+import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.xml.transform.Result;
@@ -22,7 +23,7 @@ public class DatabaseManipulator {
         conn.close();
     }
 
-    public ResultSet studentQueryStatement() throws SQLException {
+    public NamedObject studentQueryStatement(ObservableList<Student> students) throws SQLException {
         System.out.println("Running method studentQueryStatement...");
 
         String sql = "SELECT * FROM student;";
@@ -36,8 +37,11 @@ public class DatabaseManipulator {
             String Name = rs.getString(2);
             String City = rs.getString(3);
             System.out.println(ID + " " + Name + " " + City);
+            Student student = new Student(ID, Name, City);
+            students.add(student);
         }
-        return rs;
+        NamedObject namedObject = new NamedObject(rs,students);
+        return namedObject;
     }
 
     public ResultSet studentInputStatement() throws SQLException {

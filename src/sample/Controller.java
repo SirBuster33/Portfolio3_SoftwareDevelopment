@@ -31,7 +31,9 @@ public class Controller {
 
             ResultSet rs;
             System.out.println("Running method studentQueryStatement...");
-            rs = DB.studentQueryStatement();
+            NamedObject namedObject = DB.studentQueryStatement(students);
+            rs = namedObject.getRs();
+            students = namedObject.getStudents();
             System.out.println("\nRunning method studentInputStatement...");
             rs = DB.studentInputStatement();
             System.out.println("\nRunning method sqlPlanPreparedStatement... (Not working as intended)");
