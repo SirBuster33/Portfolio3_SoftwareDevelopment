@@ -67,7 +67,7 @@ public class DatabaseManipulator {
     }
 
     public ResultSet sqlPlanPreparedStatement(String courseIDS, String courseSD, Integer grade) throws SQLException {
-        System.out.println("Running preparedStatement...");
+        System.out.println("\nRunning method sqlPlanPreparedStatement... (Not working as intended)");
         String sql = "SELECT G1.StudentID, G1.CourseID, G1.Grade, G2.CourseID, G2.Grade " +
                 "FROM grade as G1 " +
                 "JOIN grade as G2 on G1.StudentID = G2.StudentID " +

@@ -30,14 +30,17 @@ public class Controller {
             DB.createStatement();
 
             ResultSet rs;
-            System.out.println("Running method studentQueryStatement...");
+
             NamedObject namedObject = DB.studentQueryStatement(students);
             rs = namedObject.getRs();
             students = namedObject.getStudents();
-            System.out.println("\nRunning method studentInputStatement...");
+            System.out.println("Resultset is: " + rs);
+
             rs = DB.studentInputStatement();
-            System.out.println("\nRunning method sqlPlanPreparedStatement... (Not working as intended)");
+            System.out.println("Resultset is: " + rs);
+
             rs = DB.sqlPlanPreparedStatement("C1", "C3", 7);
+            System.out.println("Resultset is: " + rs);
         }
         catch (SQLException e){
             e.printStackTrace();
