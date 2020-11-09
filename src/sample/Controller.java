@@ -2,6 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,14 +20,26 @@ public class Controller {
     public TableColumn tableColumnStudentName;
     public TableColumn tableColumnStudentCity;
 
+    public TableView tableCourses;
+    public TableColumn tableColumnCourseID;
+    public TableColumn tableColumnCourseName;
+    public TableColumn tableColumnCourseTeachers;
+    public TableColumn tableColumnCourseSemester;
+    public TableColumn tableColumnCourseYear;
+
     public ComboBox comboBoxSearchStudentID;
+    public ComboBox comboBoxSearchCourseID;
 
     ObservableList<Student> students = FXCollections.observableArrayList();
+    ObservableList<Course> courses = FXCollections.observableArrayList();
 
     public void initialize(){DatabaseManipulator DB = new DatabaseManipulator();
 
         tableStudents.setItems(students);
         comboBoxSearchStudentID.setItems(students);
+
+        tableCourses.setItems(courses);
+        comboBoxSearchCourseID.setItems(courses);
 
         try{
             String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
@@ -36,10 +49,11 @@ public class Controller {
 
             ResultSet rs;
 
-            NamedObject namedObject = DB.studentQueryStatement(students);
-            rs = namedObject.getRs();
-            students = namedObject.getStudents();
-            System.out.println("Resultset is: " + rs);
+            students = DB.studentQueryStatement(students);
+            courses = DB.courseQueryStatement(courses);
+            /*rs = namedObject.getRs();
+            students = namedObject.getStudents();*/
+            // System.out.println("Resultset is: " + rs);
 
             // rs = DB.studentInputStatement();
             // System.out.println("Resultset is: " + rs);
@@ -68,9 +82,15 @@ public class Controller {
         tableColumnStudentName.setCellValueFactory(new PropertyValueFactory<Student, String>("Name"));
         tableColumnStudentCity.setCellValueFactory(new PropertyValueFactory<Student, String>("City"));
 
+        tableColumnCourseID.setCellValueFactory(new PropertyValueFactory<Student, String>("ID"));
+        tableColumnCourseName.setCellValueFactory(new PropertyValueFactory<Student, String>("Name"));
+        tableColumnCourseTeachers.setCellValueFactory(new PropertyValueFactory<Student, String>("Teacher"));
+        tableColumnCourseSemester.setCellValueFactory(new PropertyValueFactory<Student, String>("Semester"));
+        tableColumnCourseYear.setCellValueFactory(new PropertyValueFactory<Student, String>("Year"));
+
     }
 
 
-
-
+    public void searchForInfo(ActionEvent actionEvent) {
+    }
 }

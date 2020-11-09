@@ -5,14 +5,14 @@ public class Course {
     private String name;
     private String teacher;
     private String semester;
-    private String year;
+    private Integer year;
 
-    public Course(String ID, String name, String teacher, String semester, String year){
-        this.setID(ID);
-        this.setName(name);
-        this.setTeacher(teacher);
-        this.setSemester(semester);
-        this.setYear(year);
+    public Course(String ID, String name, String teacher, String semester, Integer year){
+        this.ID = ID;
+        this.name = name;
+        this.teacher = teacher;
+        this.semester = semester;
+        this.year = year;
     }
 
     public String getID() {
@@ -39,10 +39,15 @@ public class Course {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
-    public void setYear(String year) {
+    public void setYear(Integer year) {
         this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return ID;
     }
 }

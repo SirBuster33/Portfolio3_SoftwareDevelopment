@@ -4,6 +4,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import static java.sql.DriverManager.getConnection;
 
@@ -23,7 +24,7 @@ public class DatabaseManipulator {
         conn.close();
     }
 
-    public NamedObject studentQueryStatement(ObservableList<Student> students) throws SQLException {
+    public ObservableList<Student> studentQueryStatement(ObservableList<Student> students) throws SQLException {
         System.out.println("Running method studentQueryStatement...");
 
         String sql = "SELECT * FROM student;";
@@ -40,8 +41,33 @@ public class DatabaseManipulator {
             Student student = new Student(ID, Name, City);
             students.add(student);
         }
-        NamedObject namedObject = new NamedObject(rs,students);
-        return namedObject;
+        // NamedObject namedObject = new NamedObject(rs,students);
+        return students;
+    }
+
+    public ObservableList<Course> courseQueryStatement(ObservableList<Course> courses) throws SQLException {
+        System.out.println("Running method courseQueryStatement...");
+
+        String sql = "SELECT * FROM course;";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs == null){
+            System.out.println("No records retrieved.");
+        }
+        // ID, Name, Teacher, Semester, Year
+        while (rs != null && rs.next()){
+            String ID = rs.getString(1);
+            String Name = rs.getString(2);
+            String Teacher = rs.getString(3);
+            String Semester = rs.getString(4);
+            Integer Year = rs.getInt(5);
+
+            System.out.println(ID + " " + Name + " " + Teacher + " " + Semester + " " + Year);
+            Course course = new Course(ID, Name, Teacher, Semester, Year);
+            courses.add(course);
+        }
+        // NamedObject namedObject = new NamedObject(rs,courses);
+        return courses;
     }
 
     public ResultSet studentInputStatement() throws SQLException {

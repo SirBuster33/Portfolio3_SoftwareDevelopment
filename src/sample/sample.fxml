@@ -9,12 +9,27 @@
         <Tab text="Select Student">
             <content>
                 <GridPane>
-                    <Label text="StudentID" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Choose Student for info:" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         <GridPane.margin>
                             <Insets left="20.0" top="10.0" />
                         </GridPane.margin>
                     </Label>
-               <ComboBox prefWidth="150.0" GridPane.columnIndex="1" fx:id="comboBoxSearchStudentID"/>
+                    <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="comboBoxSearchStudentID"/>
+                        <GridPane.margin>
+                            <Insets left="20"></Insets>
+                        </GridPane.margin>
+                    <Label text="Choose Course ID for info:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                            <Insets left="20.0" top="10.0" />
+                        </GridPane.margin>
+                    </Label>
+                    <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="comboBoxSearchCourseID"/>
+                    <GridPane.margin>
+                        <Insets left="20"></Insets>
+                    </GridPane.margin>
+                    <Button text="Start Search" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="buttonStartSearch" onAction="#searchForInfo">
+
+                    </Button>
                     <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints />
