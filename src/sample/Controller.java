@@ -2,6 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,11 +19,15 @@ public class Controller {
     public TableColumn tableColumnStudentName;
     public TableColumn tableColumnStudentCity;
 
+    public ComboBox comboBoxSearchStudentID;
+
     ObservableList<Student> students = FXCollections.observableArrayList();
 
     public void initialize(){DatabaseManipulator DB = new DatabaseManipulator();
 
         tableStudents.setItems(students);
+        comboBoxSearchStudentID.setItems(students);
+
         try{
             String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
                     "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database";
@@ -36,11 +41,11 @@ public class Controller {
             students = namedObject.getStudents();
             System.out.println("Resultset is: " + rs);
 
-            rs = DB.studentInputStatement();
-            System.out.println("Resultset is: " + rs);
+            // rs = DB.studentInputStatement();
+            // System.out.println("Resultset is: " + rs);
 
-            rs = DB.sqlPlanPreparedStatement("C1", "C3", 7);
-            System.out.println("Resultset is: " + rs);
+            // rs = DB.sqlPlanPreparedStatement("C1", "C3", 7);
+            // System.out.println("Resultset is: " + rs);
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -64,4 +69,8 @@ public class Controller {
         tableColumnStudentCity.setCellValueFactory(new PropertyValueFactory<Student, String>("City"));
 
     }
+
+
+
+
 }

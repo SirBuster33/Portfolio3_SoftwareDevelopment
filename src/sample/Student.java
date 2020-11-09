@@ -32,4 +32,9 @@ public class Student {
     public void setCity(String city) {
         City = city;
     }
+
+    @Override
+    public String toString() {
+        return ID;
+    }
 }
