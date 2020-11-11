@@ -3,9 +3,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.ResultSet;
@@ -30,16 +28,28 @@ public class Controller {
     public ComboBox comboBoxSearchStudentID;
     public ComboBox comboBoxSearchCourseID;
 
+    public Button buttonSearchForInfoStudent;
+    public TextArea textAreaInfoStudent;
+    public String InfoStudentText;
+    public Button buttonStartSearch;
+    public TextArea textAreaInfoCourse;
+    public String InfoCourseText;
+
     ObservableList<Student> students = FXCollections.observableArrayList();
     ObservableList<Course> courses = FXCollections.observableArrayList();
 
-    public void initialize(){DatabaseManipulator DB = new DatabaseManipulator();
+    public void initialize(){
+
+        DatabaseManipulator DB = new DatabaseManipulator();
 
         tableStudents.setItems(students);
         comboBoxSearchStudentID.setItems(students);
 
         tableCourses.setItems(courses);
         comboBoxSearchCourseID.setItems(courses);
+
+        // textAreaInfoStudent.appendText(InfoStudentText);
+        // textAreaInfoCourse.appendText(InfoCourseText);
 
         try{
             String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
@@ -51,30 +61,17 @@ public class Controller {
 
             students = DB.studentQueryStatement(students);
             courses = DB.courseQueryStatement(courses);
-            /*rs = namedObject.getRs();
-            students = namedObject.getStudents();*/
             // System.out.println("Resultset is: " + rs);
 
             // rs = DB.studentInputStatement();
             // System.out.println("Resultset is: " + rs);
 
-            // rs = DB.sqlPlanPreparedStatement("C1", "C3", 7);
+            // DB.sqlPlanPreparedStatement("C001", "C002", 12);
             // System.out.println("Resultset is: " + rs);
         }
         catch (SQLException e){
             e.printStackTrace();
             System.out.println("Error in try-catch line 37");
-        }
-        finally {
-            if (DB.conn != null){
-                try{
-                    System.out.println("Closing connection...");
-                    DB.closeConnection();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                    System.out.println("Error in 'finally'!");
-                }
-            }
         }
 
 
@@ -90,7 +87,24 @@ public class Controller {
 
     }
 
-
-    public void searchForInfo(ActionEvent actionEvent) {
+    public void searchForInfoStudent(ActionEvent actionEvent) {
+        textAreaInfoStudent.clear();
+        textAreaInfoStudent.appendText("You chose Student "
+                + comboBoxSearchStudentID.getSelectionModel().getSelectedItem() + ".\n"
+                + "(Student Name, Course ID, Grade)\n");
+        Student student = (Student)comboBoxSearchStudentID.getSelectionModel().getSelectedItem();
+        DatabaseManipulator DB = new DatabaseManipulator();
+        textAreaInfoStudent.appendText(DB.preparedStatementButtonStudentCourses(student.getID()));
     }
+
+    public void searchForInfoCourse(ActionEvent actionEvent) {
+        textAreaInfoCourse.clear();
+        textAreaInfoCourse.appendText("You chose Course "
+                + comboBoxSearchCourseID.getSelectionModel().getSelectedItem() + ".\n"
+                + "(Course ID, Average Grade)\n");
+        Course course = (Course)comboBoxSearchCourseID.getSelectionModel().getSelectedItem();
+        DatabaseManipulator DB = new DatabaseManipulator();
+        textAreaInfoCourse.appendText(DB.preparedStatementButtonCourseGrade(course.getID()));
+    }
+
 }
