@@ -89,6 +89,10 @@ public class Controller {
 
     public void searchForInfoStudent(ActionEvent actionEvent) {
         textAreaInfoStudent.clear();
+        if (comboBoxSearchStudentID.getSelectionModel().getSelectedItem() == null) {
+            textAreaInfoStudent.appendText("Please select a student from the list above.\n");
+            return;
+        }
         textAreaInfoStudent.appendText("You chose Student "
                 + comboBoxSearchStudentID.getSelectionModel().getSelectedItem() + ".\n"
                 + "(Student Name, Course ID, Grade)\n");
@@ -99,6 +103,10 @@ public class Controller {
 
     public void searchForInfoCourse(ActionEvent actionEvent) {
         textAreaInfoCourse.clear();
+        if (comboBoxSearchCourseID.getSelectionModel().getSelectedItem() == null) {
+            textAreaInfoCourse.appendText("Please select a course from the List above.\n");
+            return;
+        }
         textAreaInfoCourse.appendText("You chose Course "
                 + comboBoxSearchCourseID.getSelectionModel().getSelectedItem() + ".\n"
                 + "(Course ID, Average Grade)\n");
