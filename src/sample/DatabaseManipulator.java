@@ -12,18 +12,33 @@ public class DatabaseManipulator {
     Connection conn = null;
     Statement stmt;
 
+    // Allows to create statements which are required for a query of SQL code.
     public void createStatement() throws SQLException {
         stmt = conn.createStatement();
     }
 
+    // Enables the connection to a database.
     public void connect(String url) throws SQLException {
         conn = getConnection(url);
     }
 
+    // Enables a connection and is used just within this class.
+    private void Connect() {
+        try{
+            this.connect("jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
+                    "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    // Allows to close the connection to the database, which is not needed in the program since we want a connection
+    // for as long as the gui is running.
     public void closeConnection() throws SQLException {
         conn.close();
     }
 
+    // Imports the student data in Initialize.
     public ObservableList<Student> studentQueryStatement(ObservableList<Student> students) throws SQLException {
         System.out.println("Running method studentQueryStatement...");
 
@@ -45,6 +60,7 @@ public class DatabaseManipulator {
         return students;
     }
 
+    // Imports the course data in Initialize.
     public ObservableList<Course> courseQueryStatement(ObservableList<Course> courses) throws SQLException {
         System.out.println("Running method courseQueryStatement...");
 
@@ -69,29 +85,8 @@ public class DatabaseManipulator {
         return courses;
     }
 
-    public void studentInputStatement() throws SQLException {
-        System.out.println("\nRunning method studentInputStatement...");
-
-        System.out.println("Type the student ID you want info for: ");
-        Scanner scanner = new Scanner(System.in);
-        String studentID = scanner.nextLine();
-
-        String sql = "SELECT * FROM student WHERE ID = '" + studentID + "';";
-        ResultSet rs = stmt.executeQuery(sql);
-
-        if (rs == null){
-            System.out.println("No records retrieved.");
-        }
-        while (rs != null && rs.next()){
-            String ID = rs.getString(1);
-            String Name = rs.getString(2);
-            String City = rs.getString(3);
-            System.out.println("Info for Student with ID " + ID + ": " + Name + ": " + City + ".");
-        }
-    }
-
-    // This method contains two queries that activate on button press, resulting in courses taken,
-    // grades gotten and average grade being printed for a selected student.
+    // Allows for retrieval of the student info (Student name, Courses taken, grade and average grade) based on
+    // a chosen student in the comboBox for students.
     public String preparedStatementButtonStudentCourses(String StudentID) {
 
         String textAreaMessage = "";
@@ -157,6 +152,7 @@ public class DatabaseManipulator {
         return textAreaMessage;
     }
 
+    // Allows for retrieval of the average grade based on a chosen course in the comboBox for courses.
     public String preparedStatementButtonCourseGrade(String CourseID){
         String textAreaMessage = "";
 
@@ -192,12 +188,4 @@ public class DatabaseManipulator {
         return textAreaMessage;
     }
 
-    private void Connect() {
-        try{
-            this.connect("jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
-                    "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
 }

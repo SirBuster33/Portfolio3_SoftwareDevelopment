@@ -1,5 +1,8 @@
 package sample;
 
+// Allows to save the data from the database by creating course objects,
+// which is needed for displaying them in the comboBox.
+
 public class Course {
     private String ID;
     private String name;
@@ -7,6 +10,7 @@ public class Course {
     private String semester;
     private Integer year;
 
+    // Constructor
     public Course(String ID, String name, String teacher, String semester, Integer year){
         this.ID = ID;
         this.name = name;
@@ -15,6 +19,7 @@ public class Course {
         this.year = year;
     }
 
+    // Getters and Setters.
     public String getID() {
         return ID;
     }
@@ -46,6 +51,7 @@ public class Course {
         this.year = year;
     }
 
+    // Adjusted toString method that is used to display course objects in the comboBox for courses.
     @Override
     public String toString() {
         return ID + ": " + name;
