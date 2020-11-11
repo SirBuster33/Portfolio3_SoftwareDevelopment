@@ -56,7 +56,6 @@ public class DatabaseManipulator {
             Student student = new Student(ID, Name, City);
             students.add(student);
         }
-        // NamedObject namedObject = new NamedObject(rs,students);
         return students;
     }
 
@@ -70,7 +69,6 @@ public class DatabaseManipulator {
         if (rs == null){
             System.out.println("No records retrieved.");
         }
-        // ID, Name, Teacher, Semester, Year
         while (rs != null && rs.next()){
             String ID = rs.getString(1);
             String Name = rs.getString(2);

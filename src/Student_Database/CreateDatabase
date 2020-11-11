@@ -1,0 +1,99 @@
+
+-- Delete all tables.
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS grade;
+
+-- Create all tables.
+CREATE TABLE IF NOT EXISTS course(
+                                     ID          text,
+                                     Name        text,
+                                     Teacher     text,
+                                     Semester    text,
+                                     Year        integer,
+                                     primary key (ID)
+);
+CREATE TABLE IF NOT EXISTS student(
+                                      ID        text,
+                                      Name      text,
+                                      City      text,
+                                      primary key (ID)
+);
+CREATE TABLE IF NOT EXISTS grade(
+                                    StudentID text,
+                                    CourseID  text,
+                                    Grade     integer,
+                                    primary key (CourseID, StudentID),
+                                    foreign key (CourseID) REFERENCES course (ID) ON DELETE RESTRICT ON UPDATE CASCADE,
+                                    foreign key (StudentID) REFERENCES student (ID) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+-- Insert the data into the tables.
+INSERT INTO course (ID, Name, Teacher, Semester, Year) VALUES
+('C001', 'Interactive Digital Systems', 'Ebbe Vang', 'Autumn', 2019),
+('C002', 'Software Development', 'Line Reinhardt', 'Autumn', 2019),
+('C003', 'Software Development', 'Line Reinhardt', 'Spring', 2020);
+
+INSERT INTO student (ID, Name, City) VALUES
+('S001', 'Aisha Lincoln', 'Nykoebing F'),
+('S002', 'Anya Nielsen', 'Nykoebing F'),
+('S003', 'Alfred Jensen', 'Camas'),
+('S004', 'Berta Bertelsen', 'Billund'),
+('S005', 'Albert Antonsen', 'Soroe'),
+('S006', 'Eske Eriksen', 'Eskildstrup'),
+('S007', 'Olaf Olesen', 'Odense'),
+('S008', 'Salma Simonsen', 'Stockholm'),
+('S009', 'Theis Thomasen', 'Toelloese'),
+('S010', 'Janet Jensen', 'Jyllinge');
+
+INSERT INTO grade (StudentID, CourseID, Grade) VALUES
+                                                   -- Aisha
+                                                   ('S001', 'C001', 10),
+                                                   ('S001', 'C002', 12),
+                                                   -- Anya
+                                                   ('S002', 'C001', 12),
+                                                   ('S002', 'C003', null),
+                                                   -- Alfred
+                                                   ('S003', 'C001', 10),
+                                                   ('S003', 'C002', 7),
+                                                   -- Berta
+                                                   ('S004', 'C001', 2),
+                                                   ('S004', 'C003', null),
+                                                   -- Albert
+                                                   ('S005', 'C001', 7),
+                                                   ('S005', 'C002', 10),
+                                                   -- Eske
+                                                   ('S006', 'C001', 10),
+                                                   ('S006', 'C003', null),
+                                                   -- Olaf Olesen
+                                                   ('S007', 'C001', 12),
+                                                   ('S007', 'C002', 4),
+                                                   -- Salma Simonsen
+                                                   ('S008', 'C001', 12),
+                                                   ('S008', 'C003', null),
+                                                   -- Theis Thomasen
+                                                   ('S009', 'C001', 12),
+                                                   ('S009', 'C002', 12),
+                                                   -- Janet Jensen
+                                                   ('S010', 'C001', 7),
+                                                   ('S010', 'C003', null);
+
+
+
+-- Initial Information for the database:
+
+-- Aisha Lincoln from Nykøbing F, Courses: SD 2019 in autumn semester got grade 12, ES1 2019 autumn got grade 10.
+-- Anya Nielsen from Nykøbing F, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 12
+-- Alfred Jensen from Camas, Courses: SD 2019 in autumn semester got grade 7, ES1 2019 autumn got grade 10
+-- Berta Bertelsen from Billund, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester got grade 2
+-- Albert Antonsen from Sorø, Courses: SD 2019 in autumn semester got grade 10, ES1 2019 autumn got grade 7
+-- Eske Eriksen from Eskildstrup, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 10
+-- Olaf Olesen from Odense, Courses: SD 2019 in autumn semester got grade 4, ES1 2019 autumn semester got grade 12
+-- Salma Simonsen from Stockholm, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn got grade 12
+-- Theis Thomasen from Tølløse, Courses: SD 2019 in autumn semester got grade 12, ES1 2019 autumn got grade 12
+-- Janet Jensen from Jyllinge, Courses: SD 2020 in spring semester no grade yet, ES1 2019 autumn semester got grade 7
+
+-- Line is teacher for SD 2019 autumn and SD 2020 spring.
+-- Ebbe is teacher for ES1 2019 autumn.
+
