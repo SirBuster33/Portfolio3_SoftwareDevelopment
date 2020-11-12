@@ -40,7 +40,7 @@ public class DatabaseManipulator {
 
     // Imports the student data in Initialize.
     public ObservableList<Student> studentQueryStatement(ObservableList<Student> students) throws SQLException {
-        System.out.println("Running method studentQueryStatement...");
+        System.out.println("\nRunning method studentQueryStatement. Importing student data. Creating student objects...");
 
         String sql = "SELECT * FROM student;";
         ResultSet rs = stmt.executeQuery(sql);
@@ -61,7 +61,7 @@ public class DatabaseManipulator {
 
     // Imports the course data in Initialize.
     public ObservableList<Course> courseQueryStatement(ObservableList<Course> courses) throws SQLException {
-        System.out.println("Running method courseQueryStatement...");
+        System.out.println("\nRunning method courseQueryStatement. Importing course data. Creating course objects...");
 
         String sql = "SELECT * FROM course;";
         ResultSet rs = stmt.executeQuery(sql);

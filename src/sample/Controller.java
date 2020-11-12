@@ -52,6 +52,7 @@ public class Controller {
             String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
                     "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database";
             DB.connect(url);
+            DB.createStatement();
 
             // Imports the Student and Course tables from the Database to use for selection in the comboBoxes.
             students = DB.studentQueryStatement(students);
