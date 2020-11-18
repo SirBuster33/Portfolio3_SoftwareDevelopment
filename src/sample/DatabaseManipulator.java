@@ -239,7 +239,7 @@ public class DatabaseManipulator {
                     textAreaMessage += "Course " + CourseID + " has not given grades yet.\n";
                 }
                 else {
-                    textAreaMessage += "Course " + CourseID + " has an average grade of " + rsCourse.getInt(1) + "\n";
+                    textAreaMessage += "Course " + CourseID + " has an average grade of " + rsCourse.getFloat(1) + "\n";
                 }
             }
         } catch (SQLException e){
