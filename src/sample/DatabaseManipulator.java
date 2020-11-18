@@ -267,6 +267,10 @@ public class DatabaseManipulator {
             pstmtInsertGrade.setString(3, CourseID);
             Integer rsInsertGrade = pstmtInsertGrade.executeUpdate();
 
+            if (rsInsertGrade == 0){
+                textAreaMessage += "Student " + StudentID + " has already received a grade in course "
+                        + CourseID + ".\n";
+            }
             if (rsInsertGrade == 1){
                 textAreaMessage += "Added new grade for Student " + StudentID + " in course "+ CourseID
                         + ": " + Grade + "\n" ;
