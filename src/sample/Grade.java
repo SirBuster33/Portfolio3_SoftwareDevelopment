@@ -5,7 +5,7 @@ public class Grade {
     private String courseID;
     private Integer grade;
 
-    public Grade (String studentID, String courseID, Integer grade){
+    public Grade(String studentID, String courseID, Integer grade){
         this.studentID = studentID;
         this.courseID = courseID;
         this.grade = grade;

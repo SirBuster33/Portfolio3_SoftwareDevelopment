@@ -1,11 +1,8 @@
 package sample;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.xml.transform.Result;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 import static java.sql.DriverManager.getConnection;
 
 public class DatabaseManipulator {
@@ -184,7 +181,7 @@ public class DatabaseManipulator {
                 }
                 else{
                     textAreaMessage += rsInfo.getString(1) + " " + rsInfo.getString(2) + " "
-                            + rsInfo.getInt(3) + "\n";
+                            + rsInfo.getFloat(3) + "\n";
                 }
             }
 
