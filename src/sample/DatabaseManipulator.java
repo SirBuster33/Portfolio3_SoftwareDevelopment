@@ -39,6 +39,39 @@ public class DatabaseManipulator {
     }
 
     // Imports the student data in Initialize.
+    public void clearCourseUpdate() throws SQLException {
+        System.out.println("\nClearing course grades...");
+
+        String sql = "UPDATE grade SET Grade = NULL WHERE CourseID = 'C003' AND Grade IS NOT NULL;";
+        Integer rsClearCourse = stmt.executeUpdate(sql);
+
+        if (rsClearCourse != null){
+            System.out.println("Changed " + rsClearCourse +  " rows.");
+        }
+    }
+
+    // Imports the student data in Initialize.
+    public ObservableList<Student> nullStudentQueryStatement(ObservableList<Student> nullStudents) throws SQLException {
+        System.out.println("\nFetching nullStudents...");
+
+        String sql = "SELECT * FROM student;";
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs == null){
+            System.out.println("No records retrieved.");
+        }
+        while (rs != null && rs.next()){
+            String ID = rs.getString(1);
+            String Name = rs.getString(2);
+            String City = rs.getString(3);
+            System.out.println(ID + " " + Name + " " + City);
+            Student student = new Student(ID, Name, City);
+            nullStudents.add(student);
+        }
+        return nullStudents;
+    }
+
+    // Imports the student data in Initialize.
     public ObservableList<Student> studentQueryStatement(ObservableList<Student> students) throws SQLException {
         System.out.println("\nRunning method studentQueryStatement. Importing student data. Creating student objects...");
 

@@ -27,14 +27,22 @@ public class Controller {
 
     public ComboBox comboBoxSearchStudentID;
     public ComboBox comboBoxSearchCourseID;
+    public ComboBox comboBoxStudentsInsertGrade;
+    public ComboBox comboBoxCoursesInsertGrade;
+    public ComboBox comboBoxGradesInsertGrade;
 
     public Button buttonSearchForInfoStudent;
     public TextArea textAreaInfoStudent;
     public Button buttonStartSearch;
     public TextArea textAreaInfoCourse;
+    public Button buttonInsertGrade;
+    public TextArea textAreaInsertGrade;
+
 
     ObservableList<Student> students = FXCollections.observableArrayList();
     ObservableList<Course> courses = FXCollections.observableArrayList();
+    ObservableList<Student> nullGradeStudents = FXCollections.observableArrayList();
+    ObservableList<Course> nullGradeCourses = FXCollections.observableArrayList();
 
     // Enables Scenebuilder to set up the GUI with necessary relationships.
     public void initialize(){
@@ -46,6 +54,8 @@ public class Controller {
         comboBoxSearchStudentID.setItems(students);
         tableCourses.setItems(courses);
         comboBoxSearchCourseID.setItems(courses);
+        comboBoxStudentsInsertGrade.setItems(nullGradeStudents);
+        comboBoxCoursesInsertGrade.setItems(nullGradeCourses);
 
         // Attempt to connect to a database with a set url and retrieve the data necessary for setup.
         try{
@@ -54,9 +64,14 @@ public class Controller {
             DB.connect(url);
             DB.createStatement();
 
+            // Resets the grades in C003 back to null (Default state of the data).
+            DB.clearCourseUpdate();
+
             // Imports the Student and Course tables from the Database to use for selection in the comboBoxes.
             students = DB.studentQueryStatement(students);
             courses = DB.courseQueryStatement(courses);
+
+
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -111,4 +126,6 @@ public class Controller {
         textAreaInfoCourse.appendText(DB.preparedStatementButtonCourseGrade(course.getID()));
     }
 
+    public void insertGrade(ActionEvent actionEvent) {
+    }
 }
