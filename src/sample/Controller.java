@@ -140,7 +140,7 @@ public class Controller {
             return;
         }
         textAreaInsertGrade.appendText("You chose Student "
-                + comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem() + " and course "
+                + comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem() + "\nand course "
                 + comboBoxCoursesInsertGrade.getSelectionModel().getSelectedItem() + " to receive grade "
                 + comboBoxGradesInsertGrade.getSelectionModel().getSelectedItem() + ".\n");
         Student student = (Student) comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem();
