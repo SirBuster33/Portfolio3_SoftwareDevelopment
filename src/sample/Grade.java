@@ -29,4 +29,17 @@ public class Grade {
     public void setGrade(String grade) {
         grade = grade;
     }
+
+    @Override
+    public String toString() {
+        if (grade == 0){
+            return "00";
+        }
+        else if (grade == 2){
+            return "02";
+        }
+        else{
+            return "" + grade;
+        }
+    }
 }

@@ -38,7 +38,7 @@ public class DatabaseManipulator {
         conn.close();
     }
 
-    // Imports the student data in Initialize.
+    // Updates the course data to fit the initial dataset.
     public void clearCourseUpdate() throws SQLException {
         System.out.println("\nClearing course grades...");
 
@@ -50,25 +50,55 @@ public class DatabaseManipulator {
         }
     }
 
-    // Imports the student data in Initialize.
+    // Imports the student data where the students have not received a grade yet.
     public ObservableList<Student> nullStudentQueryStatement(ObservableList<Student> nullStudents) throws SQLException {
         System.out.println("\nFetching nullStudents...");
 
-        String sql = "SELECT * FROM student;";
-        ResultSet rs = stmt.executeQuery(sql);
+        String sql = "SELECT S1.ID, S1.Name, S1.City, G1.Grade " +
+                "FROM student AS S1 " +
+                "JOIN grade AS G1 ON S1.ID = G1.StudentID " +
+                "WHERE Grade IS NULL;";
+        ResultSet rsNullStudents = stmt.executeQuery(sql);
 
-        if (rs == null){
+        if (rsNullStudents == null){
             System.out.println("No records retrieved.");
         }
-        while (rs != null && rs.next()){
-            String ID = rs.getString(1);
-            String Name = rs.getString(2);
-            String City = rs.getString(3);
+        while (rsNullStudents != null && rsNullStudents.next()){
+            String ID = rsNullStudents.getString(1);
+            String Name = rsNullStudents.getString(2);
+            String City = rsNullStudents.getString(3);
             System.out.println(ID + " " + Name + " " + City);
             Student student = new Student(ID, Name, City);
             nullStudents.add(student);
         }
         return nullStudents;
+    }
+
+    // Imports the Course data where a course has not given grades yet.
+    public ObservableList<Course> nullCourseQueryStatement(ObservableList<Course> nullCourses) throws SQLException {
+        System.out.println("\nFetching nullCourses...");
+
+        String sql = "SELECT DISTINCT C1.ID, C1.Name, C1.Teacher, C1.Semester, C1.Year " +
+                     "FROM course AS C1 " +
+                     "JOIN grade G1 ON C1.ID = G1.CourseID " +
+                     "WHERE Grade IS NULL;";
+        ResultSet rsNullCourses = stmt.executeQuery(sql);
+
+        if (rsNullCourses == null){
+            System.out.println("No records retrieved.");
+        }
+        while (rsNullCourses != null && rsNullCourses.next()){
+            String ID = rsNullCourses.getString(1);
+            String Name = rsNullCourses.getString(2);
+            String Teacher = rsNullCourses.getString(3);
+            String Semester = rsNullCourses.getString(4);
+            Integer Year = rsNullCourses.getInt(5);
+
+            System.out.println(ID + " " + Name + " " + Teacher + " " + Semester + " " + Year);
+            Course course = new Course(ID, Name, Teacher, Semester, Year);
+            nullCourses.add(course);
+        }
+        return nullCourses;
     }
 
     // Imports the student data in Initialize.

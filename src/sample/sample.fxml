@@ -35,13 +35,12 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </GridPane.margin>
                 </FlowPane>
-                <TextArea fx:id="textAreaInfoCourse" minHeight="60.0"
-                          text="Course chosen, number of students, average grade in the course" GridPane.rowIndex="3">
+                <TextArea fx:id="textAreaInfoCourse" minHeight="60.0" text="Course chosen, number of students, average grade in the course" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </GridPane.margin>
                 </TextArea>
-                <Label text="Insert new grade for a student." GridPane.rowIndex="4">
+                <Label text="Insert new grade for an ungraded student." GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </GridPane.margin></Label>
@@ -52,13 +51,12 @@
                     <ComboBox fx:id="comboBoxCoursesInsertGrade" />
                     <Label text="Choose Grade:" />
                     <ComboBox fx:id="comboBoxGradesInsertGrade" />
-                    <Button onAction="#insertGrade" text="Insert Grade!" fx:id="buttonInsertGrade"/>
+                    <Button fx:id="buttonInsertGrade" onAction="#insertGrade" text="Insert Grade!" />
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </GridPane.margin>
                 </FlowPane>
-                <TextArea prefHeight="60.0" text="No new grades added for a student yet." GridPane.rowIndex="6"
-                          fx:id="textAreaInsertGrade">
+                <TextArea fx:id="textAreaInsertGrade" prefHeight="60.0" text="No new grades added for a student yet." GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></TextArea>

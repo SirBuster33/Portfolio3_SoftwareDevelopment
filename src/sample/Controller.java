@@ -8,6 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -30,6 +31,7 @@ public class Controller {
     public ComboBox comboBoxStudentsInsertGrade;
     public ComboBox comboBoxCoursesInsertGrade;
     public ComboBox comboBoxGradesInsertGrade;
+    public ComboBox comboBoxDanishGradingScale;
 
     public Button buttonSearchForInfoStudent;
     public TextArea textAreaInfoStudent;
@@ -43,6 +45,7 @@ public class Controller {
     ObservableList<Course> courses = FXCollections.observableArrayList();
     ObservableList<Student> nullGradeStudents = FXCollections.observableArrayList();
     ObservableList<Course> nullGradeCourses = FXCollections.observableArrayList();
+    ObservableList<Grade> danishGradingScale = FXCollections.observableArrayList();
 
     // Enables Scenebuilder to set up the GUI with necessary relationships.
     public void initialize(){
@@ -56,6 +59,10 @@ public class Controller {
         comboBoxSearchCourseID.setItems(courses);
         comboBoxStudentsInsertGrade.setItems(nullGradeStudents);
         comboBoxCoursesInsertGrade.setItems(nullGradeCourses);
+        // Adds the danish grades as an option for the grade comboBox.
+        comboBoxGradesInsertGrade.setItems(danishGradingScale);
+        danishGradingScale = addDanishGrades(danishGradingScale);
+
 
         // Attempt to connect to a database with a set url and retrieve the data necessary for setup.
         try{
@@ -70,7 +77,8 @@ public class Controller {
             // Imports the Student and Course tables from the Database to use for selection in the comboBoxes.
             students = DB.studentQueryStatement(students);
             courses = DB.courseQueryStatement(courses);
-
+            nullGradeStudents = DB.nullStudentQueryStatement(nullGradeStudents);
+            nullGradeCourses = DB.nullCourseQueryStatement(nullGradeCourses);
 
         }
         catch (SQLException e){
@@ -127,5 +135,23 @@ public class Controller {
     }
 
     public void insertGrade(ActionEvent actionEvent) {
+    }
+
+    public ObservableList<Grade> addDanishGrades(ObservableList<Grade> danishGradingScale){
+        Grade unacceptable = new Grade("","", -3);
+        danishGradingScale.add(unacceptable);
+        Grade inadequate = new Grade("","", 00);
+        danishGradingScale.add(inadequate);
+        Grade adequate = new Grade("","", 02);
+        danishGradingScale.add(adequate);
+        Grade fair = new Grade("","", 4);
+        danishGradingScale.add(fair);
+        Grade good = new Grade("","", 7);
+        danishGradingScale.add(good);
+        Grade veryGood = new Grade("","", 10);
+        danishGradingScale.add(veryGood);
+        Grade excellent = new Grade("","", 12);
+        danishGradingScale.add(excellent);
+        return danishGradingScale;
     }
 }
