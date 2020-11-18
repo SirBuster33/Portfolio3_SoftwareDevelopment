@@ -6,9 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Controller {
 
@@ -31,7 +29,6 @@ public class Controller {
     public ComboBox comboBoxStudentsInsertGrade;
     public ComboBox comboBoxCoursesInsertGrade;
     public ComboBox comboBoxGradesInsertGrade;
-    public ComboBox comboBoxDanishGradingScale;
 
     public Button buttonSearchForInfoStudent;
     public TextArea textAreaInfoStudent;
@@ -112,7 +109,7 @@ public class Controller {
         textAreaInfoStudent.appendText("You chose Student "
                 + comboBoxSearchStudentID.getSelectionModel().getSelectedItem() + ".\n"
                 + "(Student Name, Course ID, Grade)\n");
-        Student student = (Student)comboBoxSearchStudentID.getSelectionModel().getSelectedItem();
+        Student student = (Student) comboBoxSearchStudentID.getSelectionModel().getSelectedItem();
         DatabaseManipulator DB = new DatabaseManipulator();
         textAreaInfoStudent.appendText(DB.preparedStatementButtonStudentCourses(student.getID()));
     }
@@ -129,12 +126,30 @@ public class Controller {
         textAreaInfoCourse.appendText("You chose Course "
                 + comboBoxSearchCourseID.getSelectionModel().getSelectedItem() + ".\n"
                 + "(Course ID, Average Grade)\n");
-        Course course = (Course)comboBoxSearchCourseID.getSelectionModel().getSelectedItem();
+        Course course = (Course) comboBoxSearchCourseID.getSelectionModel().getSelectedItem();
         DatabaseManipulator DB = new DatabaseManipulator();
         textAreaInfoCourse.appendText(DB.preparedStatementButtonCourseGrade(course.getID()));
     }
 
     public void insertGrade(ActionEvent actionEvent) {
+        textAreaInsertGrade.clear();
+        if (comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem() == null ||
+                comboBoxCoursesInsertGrade.getSelectionModel().getSelectedItem() == null  ||
+                comboBoxGradesInsertGrade.getSelectionModel().getSelectedItem() == null){
+            textAreaInsertGrade.appendText("Please make sure that all boxes have an item selected.\n");
+            return;
+        }
+        textAreaInsertGrade.appendText("You chose Student "
+                + comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem() + " and course "
+                + comboBoxCoursesInsertGrade.getSelectionModel().getSelectedItem() + " to receive grade "
+                + comboBoxGradesInsertGrade.getSelectionModel().getSelectedItem() + ".\n");
+        Student student = (Student) comboBoxStudentsInsertGrade.getSelectionModel().getSelectedItem();
+        Course course = (Course) comboBoxCoursesInsertGrade.getSelectionModel().getSelectedItem();
+        Grade grade = (Grade) comboBoxGradesInsertGrade.getSelectionModel().getSelectedItem();
+        DatabaseManipulator DB = new DatabaseManipulator();
+        textAreaInsertGrade.appendText(DB.preparedStatementButtonInsertGrade(
+                student.getID(), course.getID(), grade.getGrade()));
+
     }
 
     public ObservableList<Grade> addDanishGrades(ObservableList<Grade> danishGradingScale){

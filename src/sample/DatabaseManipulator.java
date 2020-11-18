@@ -249,4 +249,37 @@ public class DatabaseManipulator {
         return textAreaMessage;
     }
 
+    // Updates a grade based on the comboBox choices when inserting a grade.
+    public String preparedStatementButtonInsertGrade(String StudentID, String CourseID, Integer Grade){
+        String textAreaMessage = "";
+
+        Connect();
+
+        System.out.println("\nRunning Button for inserting grades...");
+
+
+        String sqlInsertGrade = "UPDATE grade SET Grade = ? WHERE StudentID = ? AND CourseID = ? AND Grade IS NULL;";
+
+        try{
+            PreparedStatement pstmtInsertGrade = conn.prepareStatement(sqlInsertGrade);
+            pstmtInsertGrade.setInt(1, Grade);
+            pstmtInsertGrade.setString(2, StudentID);
+            pstmtInsertGrade.setString(3, CourseID);
+            Integer rsInsertGrade = pstmtInsertGrade.executeUpdate();
+
+            if (rsInsertGrade == 1){
+                textAreaMessage += "Added new grade for Student " + StudentID + " in course "+ CourseID
+                        + ": " + Grade + "\n" ;
+            }
+            else if (rsInsertGrade > 1){
+                textAreaMessage += "Error: Too many grades added. " +
+                        "Please save the settings above and consult your IT department.\n";
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return textAreaMessage;
+    }
+
 }
