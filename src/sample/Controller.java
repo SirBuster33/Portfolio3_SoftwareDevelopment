@@ -63,8 +63,8 @@ public class Controller {
 
         // Attempt to connect to a database with a set url and retrieve the data necessary for setup.
         try{
-            String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
-                    "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database";
+            String url = "jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC_stuff_from_small_lenovo\\Ruc\\Philipp_RUC" +
+                    "\\5th_Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database";
             DB.connect(url);
             DB.createStatement();
 

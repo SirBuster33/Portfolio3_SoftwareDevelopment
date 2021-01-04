@@ -22,8 +22,8 @@ public class DatabaseManipulator {
     // Enables a connection and is used just within this class.
     private void Connect() {
         try{
-            this.connect("jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC stuff from small lenovo\\Ruc\\Philipp RUC" +
-                    "\\5th Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database");
+            this.connect("jdbc:sqlite:C:\\Users\\Kata\\Documents\\RUC_stuff_from_small_lenovo\\Ruc\\Philipp_RUC" +
+                    "\\5th_Semester\\Portfolio3_SoftwareDevelopment\\src\\Student_Database\\Student_Database");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -269,7 +269,7 @@ public class DatabaseManipulator {
                         + CourseID + ".\n";
             }
             if (rsInsertGrade == 1){
-                textAreaMessage += "Added new grade for Student " + StudentID + " in course "+ CourseID
+                textAreaMessage += "Added new grade for Student " + StudentID + " in course " + CourseID
                         + ": " + Grade + "\n" ;
             }
             else if (rsInsertGrade > 1){
